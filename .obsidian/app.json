@@ -1,0 +1,7 @@
+{
+  "userIgnoreFilters": [
+    "images/",
+    "md_assets/"
+  ],
+  "alwaysUpdateLinks": true
+}
