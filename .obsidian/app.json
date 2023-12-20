@@ -3,5 +3,9 @@
     "images/",
     "md_assets/"
   ],
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "vimMode": true,
+  "showLineNumber": true,
+  "readableLineLength": false,
+  "strictLineBreaks": false
 }

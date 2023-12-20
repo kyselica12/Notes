@@ -1,1 +1,17 @@
-{}
+{
+  "slides:start": [
+    {
+      "modifiers": [],
+      "key": "F5"
+    }
+  ],
+  "multi-column-markdown:insert-multi-column-region": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "\\"
+    }
+  ],
+  "file-explorer:new-file": []
+}

@@ -1,5 +1,5 @@
 ### Self-supervised Learning in Remote Sensing: A review
-([link](https://paperswithcode.com/paper/self-supervised-learning-in-remote-sensing-a)/[[bibliography#Self-supervised Learning in Remote Sensing: A review|citation]])
+([link](https://paperswithcode.com/paper/self-supervised-learning-in-remote-sensing-a)/[[notes/forest_segmentation/bibliography#Self-supervised Learning in Remote Sensing: A review|citation]])
 
 - Review of self-supervised learning methods usable in remote sensing
 
@@ -13,7 +13,7 @@
 ## Metrics & Loss functions
 
 ### Weighted Intersection over Union
-([link](https://arxiv.org/pdf/2107.09858)/[[bibliography#Weighted Intersection over Union|citation]])
+([link](https://arxiv.org/pdf/2107.09858)/[[notes/forest_segmentation/bibliography#Weighted Intersection over Union|citation]])
 
 - Proposed new metric for Image segmentation
 - Focus more on boundaries -> adjustable with $\alpha$ parameter
@@ -33,7 +33,7 @@
 
 
 ### A survey of loss functions for semantic segmentation
-([link](https://arxiv.org/abs/2006.14822)/[[bibliography#A survey of loss functions for semantic segmentation|citation]])
+([link](https://arxiv.org/abs/2006.14822)/[[notes/forest_segmentation/bibliography#A survey of loss functions for semantic segmentation|citation]])
 
 | Type | Loss Function |
 | :---: | :---: |

@@ -1,5 +1,5 @@
 ### Spatial Resolution Enhancement for Large-Scale Land Cover Mapping via Weakly Supervised Deep Learning
-([link](https://www.ingentaconnect.com/content/asprs/pers/2021/00000087/00000006/art00009)/[[bibliography#Spatial Resolution Enhancement for Large-Scale Land Cover Mapping via Weakly Supervised Deep Learning|citation]])
+([link](https://www.ingentaconnect.com/content/asprs/pers/2021/00000087/00000006/art00009)/[[notes/forest_segmentation/bibliography#Spatial Resolution Enhancement for Large-Scale Land Cover Mapping via Weakly Supervised Deep Learning|citation]])
 
 - Use Sentinel 1 and Sentinel 2 data to improve *MODIS* land cover data
 - *MODIS* data is low resolution (500m) and Sentinel 2 is high resolution (10m)
@@ -16,7 +16,7 @@
 ![Workflow](modis_enhancement.png)
 
 ### Super-resolution land cover mapping by deel learning
-([link](https://www.tandfonline.com/doi/abs/10.1080/2150704x.2019.1587196)/[[bibliography#Super-resolution land cover mapping by deel learning|citation]])
+([link](https://www.tandfonline.com/doi/abs/10.1080/2150704x.2019.1587196)/[[notes/forest_segmentation/bibliography#Super-resolution land cover mapping by deel learning|citation]])
 
 1. Input land cover map is divided into maps containing only one class
 1. For each class CNN is trained to upsample the map
@@ -37,14 +37,14 @@
 ![Results](deep_SRM.png)
 
 ### Enhancing Land Cover Mapping and Monitoring: An Interactive and Explainable Machine Learning Approach Using Google Earth Engine
-([link](https://www.mdpi.com/2072-4292/15/18/4585)/[[bibliography#Enhancing Land Cover Mapping and Monitoring: An Interactive and Explainable Machine Learning Approach Using Google Earth Engine|citation]])
+([link](https://www.mdpi.com/2072-4292/15/18/4585)/[[notes/forest_segmentation/bibliography#Enhancing Land Cover Mapping and Monitoring: An Interactive and Explainable Machine Learning Approach Using Google Earth Engine|citation]])
 
 - Interactive tool for land cover mapping using Google Earth Engine
 - Uses Sentinel 2 data
 ![Diagram](gee_colab_tool.png)
 
 ### SEG-ESRGAN: A Multi-Task Netwoek for Super-Resolution and Semantic Segmentation of Remote Sensing Images
-([link](https://www.mdpi.com/2072-4292/14/22/5862)/[[bibliography#SEG-ESRGAN: A Multi-Task Netwoek for Super-Resolution and Semantic Segmentation of Remote Sensing Images|citation]])
+([link](https://www.mdpi.com/2072-4292/14/22/5862)/[[notes/forest_segmentation/bibliography#SEG-ESRGAN: A Multi-Task Netwoek for Super-Resolution and Semantic Segmentation of Remote Sensing Images|citation]])
 
 - Performing two tasks at once:
 	1. Super resolution of Sentinel 2 Imagery

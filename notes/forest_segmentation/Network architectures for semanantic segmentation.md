@@ -1,5 +1,5 @@
 ### Benchmarking and scaling of deep learning models for land cover image classification
-([link](https://www.sciencedirect.com/science/article/pii/S0924271622003057)/[[bibliography#Benchmarking and scaling of deep learning models for land cover image classification|citation]])
+([link](https://www.sciencedirect.com/science/article/pii/S0924271622003057)/[[notes/forest_segmentation/bibliography#Benchmarking and scaling of deep learning models for land cover image classification|citation]])
 
 
 - BigEarthNet dataset
@@ -12,7 +12,7 @@
 - CNN
 - WRN (wide residual network) + EfficientNet with attention (best performance)
 ### Fully Convolutional Networks for Semantic Segmentation
-[[bibliography#Fully Convolutional Networks for Semantic Segmentation|citation]]
+[[notes/forest_segmentation/bibliography#Fully Convolutional Networks for Semantic Segmentation|citation]]
 
 
 - Fully Convolutional network for pixel-vise semantic segmentation from CNN for image classification
@@ -27,7 +27,7 @@ Skipped connections are used to preserve more information about details in the i
 
 ![Fully CNN architecture with skipped connections](FCN_architecture.png)
 ### U-Net: Convolutional Networks for Biomedical Image Segmentation
-([link](https://link.springer.com/chapter/10.1007/978-3-319-24574-4_28)/[[bibliography#U-Net: Convolutional Networks for Biomedical Image Segmentation|citation]])
+([link](https://link.springer.com/chapter/10.1007/978-3-319-24574-4_28)/[[notes/forest_segmentation/bibliography#U-Net: Convolutional Networks for Biomedical Image Segmentation|citation]])
 
 - Full CNN network reminding U-shape
 - Output is the same size as image containing one output channel for one segmentation class
@@ -38,7 +38,7 @@ Skipped connections are used to preserve more information about details in the i
 
 
 ### Semantic image segmentation with deep convolutional nets and fully connected CRFs
-([link](https://arxiv.org/abs/1412.7062)/[[bibliography#Semantic image segmentation with deep convolutional nets and fully connected CRFs|citation]])
+([link](https://arxiv.org/abs/1412.7062)/[[notes/forest_segmentation/bibliography#Semantic image segmentation with deep convolutional nets and fully connected CRFs|citation]])
 
 - Use of **atrous algorithm** or altrous convolution.
 
@@ -70,7 +70,7 @@ $$
 
 where $p$ is the position, $I$ is color (RGB) vector and $\sigma$ are hyper parameters.
 ### Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation
-([link](https://openaccess.thecvf.com/content_ECCV_2018/html/Liang-Chieh_Chen_Encoder-Decoder_with_Atrous_ECCV_2018_paper.html)/[[bibliography#Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation|citation]])
+([link](https://openaccess.thecvf.com/content_ECCV_2018/html/Liang-Chieh_Chen_Encoder-Decoder_with_Atrous_ECCV_2018_paper.html)/[[notes/forest_segmentation/bibliography#Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation|citation]])
 
 - Encoder-Decoder architecture for better reconstruction
 - Xception network with depthwise-separable convolutions (convolution is done by channels separatly and processed by 1x1 convolution at the end to reduce number of computations)
@@ -80,7 +80,7 @@ where $p$ is the position, $I$ is color (RGB) vector and $\sigma$ are hyper para
 ![DeepLabV3+](DeepLabV3+.png)
 
 ### Swin Transformer: Hierarchical Vision Transformer using Shifted Windows
-([link](https://openaccess.thecvf.com/content/ICCV2021/html/Liu_Swin_Transformer_Hierarchical_Vision_Transformer_Using_Shifted_Windows_ICCV_2021_paper)/[[bibliography#Swin Transformer: Hierarchical Vision Transformer using Shifted Windows|citation]])
+([link](https://openaccess.thecvf.com/content/ICCV2021/html/Liu_Swin_Transformer_Hierarchical_Vision_Transformer_Using_Shifted_Windows_ICCV_2021_paper)/[[notes/forest_segmentation/bibliography#Swin Transformer: Hierarchical Vision Transformer using Shifted Windows|citation]])
 
 - Transformer achitecture adapted on vision tasks to become an universal backbone architecture
 - Introduced:
@@ -94,7 +94,7 @@ where $p$ is the position, $I$ is color (RGB) vector and $\sigma$ are hyper para
 - State of the art performance on various computer vision tasks including semantic segmentation
 
 ### Segment Anything
-([link](https://arxiv.org/abs/2304.02643)/[[bibliography#Segment Anything|citation]])
+([link](https://arxiv.org/abs/2304.02643)/[[notes/forest_segmentation/bibliography#Segment Anything|citation]])
 
 - Promt based segmentation
 - trained with over 1 billion masks
