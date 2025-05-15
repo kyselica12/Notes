@@ -1,0 +1,9 @@
+- [BigEarthNet](https://bigearth.net/)
+    - 590,326 Sentinel-2 image patches
+- [SEN12MS + DFC2020](https://ieee-dataport.org/competitions/2020-ieee-grss-data-fusion-contest#files)
+    - low resolution SEN12MS dataset (original for training in the competition) using [MODIS](https://lpdaac.usgs.gov/products/mcd12q1v061/) land cover data
+    - high resolution DFC2020 dataset (for testing in the competition)
+- [SSL4EO-S12](https://paperswithcode.com/paper/ssl4eo-s12-a-large-scale-multi-modal-multi)([citation](projects/Uni/forest_segmentation/bibliography.md#ssl4eo-s12-a-large-scale-multi-modal-multi-temporal-dataset-for-self-supervised-learning-in-earth-observation))
+    - dataset for self-supervised pretraining containing unlabeled data
+    - pretrained models including MoCo-v2, DINO, MAE, data2vec
+    - pretrained models perfomed better than their supervised counterparts

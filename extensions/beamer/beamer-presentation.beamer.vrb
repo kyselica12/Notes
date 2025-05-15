@@ -1,0 +1,15 @@
+\frametitle{First slide}
+\phantomsection\label{first-slide}
+\begin{verbatim}
+- \titleimage{../Attachments/FMFI_logos/FMFI_logo_black.png}
+
+fonttheme: "Bomba"
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{../templates/debris_stats.png}
+\caption{stats}
+\end{figure}
+
+some text

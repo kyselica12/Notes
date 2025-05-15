@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/white.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/custom_layout.css" />
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 3%; top: 80%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+**Supervisor**: Roman Ďurikovič<br>
+**Advisor**:      Jiří Šilha
+</div>
+
+
+
+	
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0px 0px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 25%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+<img src="presentation-theme/FMFI_logo_text_ENG_black.png" alt="" style="object-fit: scale-down">
+
+
+</div>
+
+<div class="title" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 25%; height: 40%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Processing of light curves of satellites and space debris for the purpose of their identification 
+</div>
+
+
+</div>
+
+<div class="event" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 55%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+PhD colloquium
+</div>
+
+
+</div>
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 65%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Daniel Kyselica <!-- .element: style="font-size: 1.4em" -->
+</div>
+
+
+</div>
+
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 50%; top: 90%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<div class="block">
+
+28.10.2024
+</div>
+
+
+</div>
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Space Debris <!-- .element: class="title" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+ESA Space Environment Report 2024
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Space Debris
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 25%; height: 60%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="projects/Coloquium presentation/images/esa_numbers.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 4%; top: 74%; height: 60%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Number of tracked objects in Earth orbit over time
+</div>
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 55%; top: 15%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="projects/Coloquium presentation/images/esa2.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 54%; top: 74%; height: 60%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Number of tracked objects in Earth orbit over time
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Reentry Event<!-- .element: class="title" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 5%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Reentry event
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 1%; height: 100%; width: 40%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+1. &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Partial fragmentation
+1. &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Main fragmentation - explosion
+1. &shy;<!-- .element: class="fragment" data-fragment-index="3" -->**Light flight**
+1. &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Dark flight
+1. &shy;<!-- .element: class="fragment" data-fragment-index="5" -->Impact
+</div>
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 45%; top: 1%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="projects/Coloquium presentation/images/reentry.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 45%; top: 50%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+Reentry event stages<sup id="fnref:1" role="doc-noteref">1</sup>
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[1]: Space safety 2023
+</div>
+
+
+</div>
+</div>
+<div class="footnotes" role="doc-endnotes">
+<ol>
+</ol>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Salsa Reentry
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Reentry
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 20%; height: 40%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="projects/Coloquium presentation/images/astros_logo.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 50%; height: 40%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="projects/Coloquium presentation/images/FMFI_logo_black 1.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 115%; width: 100%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="projects/Coloquium presentation/images/reentry3.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Salsa Reentry - Plane observation
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Reentry
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 1%; height: 110%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<img src="projects/Coloquium presentation/images/reentry2.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 1%; height: 110%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<img src="projects/Coloquium presentation/images/reentry2_2.PNG" alt="" style="object-fit: scale-down" class="fragment fade-in">
+
+</div>
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+CZ-3B reentry on `$25^{th}$` October 2020 
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Reentry
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 2%; top: 1%; height: 100%; width: 46%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="projects/Coloquium presentation/images/reentry_hk.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 95%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+Composite Image from AMOS-HK<sup id="fnref:1" role="doc-noteref">1</sup>
+</div>
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 50%; top: 1%; height: 100%; width: 46%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="projects/Coloquium presentation/images/reentry_mk.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 46%; top: 95%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+Composite Image from AMOS-MK<sup id="fnref:1" role="doc-noteref">2</sup>
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[1,2] : Šilha, Jiří, et al. "Analysis of re-entry event of CZ-3B R/B observed by all-sky meteor cameras AMOS." _2nd NEO and Debris Detection Conference_ 2023.
+</div>
+
+
+</div>
+</div>
+<div class="footnotes" role="doc-endnotes">
+<ol>
+</ol>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Towards image processing of reentry event<sup id="fnref:1" role="doc-noteref">1</sup>
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Reentry
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+
+**Pipeline** <!-- .element: style="font-size: 1.5em" -->
+1. Preprocessing: denoising, background subtraction, thresholding;
+2. Fragment segmentation;
+3. Fragment tracking;d
+4. Fragment association by descriptors
+
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[1]: Kyselica, D., et al. "Towards image processing of reentry event." _JAMSI_ 19.1 (2023): 47-60.
+</div>
+
+
+</div>
+</div>
+<div class="footnotes" role="doc-endnotes">
+<ol>
+</ol>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Association
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Image processing pipeline
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 20%; height: 150%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start" align="top">
+
+<img src="projects/Coloquium presentation/images/pipeline1.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 10%; width: 90%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+Visualization of association between summary frames corresponding to frames 240-280 in original video recordings.
+</div>
+
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Results
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Image processing pipeline
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: -3%; top: 0%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="projects/Coloquium presentation/images/result2.PNG" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 46%; top: 6%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="projects/Coloquium presentation/images/result1_1.png" alt="" style="object-fit: scale-down">
+
+</div> 
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: -3%; top: -5%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start" align="top">
+
+Human association<sup id="fnref:1" role="doc-noteref">1</sup>
+</div>
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 46%; top: -5%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start" align="top">
+
+Automated association<sup id="fnref:2" role="doc-noteref">2</sup>
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[1] : Šilha, Jiří, et al. "Analysis of re-entry event of CZ-3B R/B observed by all-sky meteor cameras AMOS." _2nd NEO and Debris Detection Conference_ 2023.<br>
+[2]: Kyselica, D., et al. "Towards image processing of reentry event." _JAMSI_ 19.1 (2023): 47-60.
+</div>
+
+
+</div>
+</div>
+<div class="footnotes" role="doc-endnotes">
+<ol>
+</ol>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Light Curves<!-- .element: class="title" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 5%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Light Curve
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 1%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- Sequnce of consecutive measurements 
+- Result of objets shape, reflection properties, geometry, surgace, rotation ...
+- Observation conditions have high impact on quality
+</div>
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 50%; top: 1%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="projects/Coloquium presentation/images/lc1.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="font-size: 0.8em; padding: 0 0px; box-sizing: border-box; position: absolute; left: 50%; top: 98%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+Objec, sun and observer scene </div>
+
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[1]: Nussbaum, Max, et al. "Spectral light curve simulation for parameter estimation from space debris." _Aerospace_ 9.8 (2022): 403.
+</div>
+
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Example: Atlas V Centaur
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Light Curves
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 1%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<img src="projects/Coloquium presentation/images/scatter.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 50%; top: 1%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<img src="projects/Coloquium presentation/images/Atlas_V_PHS_30_OBS_30.gif" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Databases
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Light Curves
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 2%; top: 0%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+**Mini Mega Tortora (MMT)**<sup id="fnref:1" role="doc-noteref">1</sup>
+</div>
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 2%; top: 10%; height: 40%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- 15 560 objects
+- 2 923 objects with apparent period
+- 525 122 tracks
+</div>
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 2%; top: 43%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+**Catalogue SDLCD**
+</div>
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 2%; top: 58%; height: 40%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- Maintained by Astronomical and geophysical observatory in Modra
+- 759 objects
+- 1 925 tracks
+- folded light curves
+</div>
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 50%; top: 1%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<img src="projects/Coloquium presentation/images/mmt1.png" alt="" style="width: 300px; object-fit: fill">
+
+</div>
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 50%; top: 92%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+Falcon 9 light curve<sup id="fnref:1" role="doc-noteref">2</sup>
+</div>
+
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[1-2]: Karpov, S et al. (2016). “Massive photometry of low-altitude artificial satellites on
+Mini-Mega-TORTORA”. _Revista Mexicana de Astronomia y Astrofisica_ 48,
+pp. 112–113.
+</div>
+
+
+</div>
+</div>
+<div class="footnotes" role="doc-endnotes">
+<ol>
+</ol>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Shape classification from light curves
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Light Curves
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 100%; width: 33%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+Box-wing
+<img src="projects/Coloquium presentation/images/jason2.png" alt="" style="width: 250px; object-fit: fill">
+
+<div class="block">
+
+<!-- .element: style="font-size: 0.8em" -->
+Jason-2 satellite<sup id="fnref:1" role="doc-noteref">1</sup>
+</div>
+
+
+</div>
+<div class="" style="position: absolute; left: 33%; top: 0%; height: 100%; width: 33%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+Rocket body
+<img src="projects/Coloquium presentation/images/falcon9.png" alt="" style="width: 250px; object-fit: fill">
+
+<div class="block">
+
+<!-- .element: style="font-size: 0.8em" -->
+Falcon 9 second stage 
+</div>
+
+
+</div>
+<div class="" style="position: absolute; left: 66%; top: 0%; height: 100%; width: 33%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+Asymmetrical
+<img src="projects/Coloquium presentation/images/EOS.png" alt="" style="width: 250px; object-fit: fill">
+
+<div class="block">
+
+<!-- .element: style="font-size: 0.8em" -->
+Earth Observing-1 satellite<sup id="fnref:1" role="doc-noteref">2</sup><!-- .element: style="font-size: 0.8em" -->
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[1]: Re-entry of the Jules Verne (n.d.). https://nasa3d.arc.nasa.gov/models.
+Accessed: 2023-12-06.
+</div>
+
+
+</div>
+</div>
+<div class="footnotes" role="doc-endnotes">
+<ol>
+</ol>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Allworth et al 2021<sup id="fnref:1" role="doc-noteref">1</sup>
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Shape classification from light curves
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<div class="" style="font-size: 1.3em; position: absolute; left: 2%; top: 0%; height: 10%; width: 96%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start" align="top">
+
+**A transfer learning approach to space debris classification using observational light curve data**
+</div>
+<div class="" style="font-size: 1.1em; position: absolute; left: 2%; top: 40%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+**Model**
+</div>
+<div class="" style="position: absolute; left: 2%; top: 20%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- 1D CNN network;
+- Pretrained on synthetic data;
+- Finetunning using real data.
+</div>
+
+<div class="" style="font-size: 1.1em; position: absolute; left: 50%; top: 40%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+**Data**
+</div>
+<div class="" style="position: absolute; left: 50%; top: 20%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- MMT database;
+- At least 500 measurements per rotational period;
+- Samples are rescaled to 1200 points
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[1]:Allworth, James et al. (2021). “A transfer learning approach to space debris
+classification using observational light curve data”. In: Acta Astronautica 181,
+pp. 301–315.
+</div>
+
+
+</div>
+</div>
+<div class="footnotes" role="doc-endnotes">
+<ol>
+</ol>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Results
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Allworth et al 2021
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 2%; top: 10%; height: 90%; width: 90%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<img src="projects/Coloquium presentation/images/allworth_results.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[1]:Allworth, James et al. (2021). “A transfer learning approach to space debris
+classification using observational light curve data”. In: Acta Astronautica 181,
+pp. 301–315.
+</div>
+
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Proposed Solution
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Shape classification from light curves
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+<div class="" style="font-size: 1.1em; position: absolute; left: 2%; top: 10%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+**Model**
+</div>
+<div class="" style="position: absolute; left: 2%; top: 10%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- Two architectures
+	- 1D CNN;
+	- 1D ResNet-18
+- Trained only on real data
+- Weighted loss function  
+</div>
+
+<div class="" style="font-size: 1.1em; position: absolute; left: 50%; top: 10%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+**Data**
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- MMT database - light curces split into individual rotational periods;
+- Rocket Bodies:
+	- Falcon 9, Atlas V, CZ-3B, H-2A;
+- Heavily unbalanced dataset.
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[1]: Kyselica, Daniel, et al. "Astronomical Objects Classification by Convolutional Neural Network Algorithms Layers." _2022 New Trends in Signal Processing (NTSP)_. IEEE, 2022.
+</div>
+
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Results
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Shape classification from light curves
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: -10%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- Similar performance to the state of the art;
+- Used to identify Lunar impactor WE0913A<sup id="fnref:2" role="doc-noteref">1</sup>
+- Partial results presented<sup id="fnref:1" role="doc-noteref">2</sup>
+- Bad generalization to other datasets
+</div>
+
+<div class="" style="position: absolute; left: 47%; top: -10%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+| Object | F1  score | Precision | Recall |
+| :--: | :---: | :---: | :---: | 
+| CZ-3B | 0.880 | 0.895 | 0.865 |
+| Atlas V | 0.761 | 0.702 | 0.830 |
+| Falcon 9 | 0.670 | 0.641 | 0.702 |
+| H-2A | 0.814 | 0.881 | 0.756 |
+</div>
+
+<div class="footer" style="position: absolute; left: 2%; top: 90%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+[1]:Šilha, J., et al. "Space Debris Rotation Properties and Characterization Using Rotation Phase Curves Extracted from Public Photometric Catalogues." _LPI Contributions_ 2852 (2023): 6028.<br>
+[2]: Kyselica, Daniel, et al. "Astronomical Objects Classification by Convolutional Neural Network Algorithms Layers." _2022 New Trends in Signal Processing (NTSP)_. IEEE, 2022.
+</div>
+
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+<div class="footnotes" role="doc-endnotes">
+<ol>
+</ol>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Problems
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Shape classification from light curves
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 2%; top: 10%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+**Preprocessing**:
+- Rescaling;
+- Padding / trimming;
+- Normalization - standard, by amplitude ...
+**Filtration**:
+- Number of measurements;
+- Coverage of the rotation period;
+</div>
+
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+**Train - test split by**:
+- rotational periods;
+- tracks;
+- objects;
+**Evaluation**:
+- accuracy;
+- F1 score.
+</div>
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+RoBo6 *
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Light Curve
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+<div class="heading-color" style="position: absolute; left: 0%; top: 2%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**Standardized MMT Light Curve Dataset for
+Rocket Body Classification**
+</div>
+
+<div class="" style="position: absolute; left: 2%; top: 10%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+**Preprocessing**:
+- Resampled with frequency 10Hz
+- Split by gaps / size to 10 000 points
+- Zero Padding 
+- Normalization using mean, std
+**Filtration**:
+- At least 100 measurements
+- 75\% coverage of folded LC
+</div>
+
+<div class="" style="position: absolute; left: 52%; top: 10%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+**Train - test split by**:
+- tracks 
+**Evaluation**:
+- F1 score.
+**6 Classes of rocket bodies**:
+- CZ-3B, Atlas V, Falcon 9, H-2A, Ariane 5, Delta 4
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+\* Accepted for publication at 
+Machine Learning and the Physical Sciences Workshop @ NeurIPS 2024
+</div>
+
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Benchmark results
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+RoBo6
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 50%; width: 90%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<img src="Pasted image 20241023135234.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="footer" style="position: absolute; left: 2%; top: 85%; height: 10%; width: 95%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+[5]: Allworth, James, et al. "A transfer learning approach to space debris classification using observational light curve data." 2021<br>
+[6]:Furfaro, Roberto, et al. "Space objects classification via light-curve measurements: deep convolutional neural networks and model-based transfer learning." 2018 <br>
+[7]: He, Kaiming, et al. "Deep residual learning for image recognition." 2016<br>
+[12]: Pan, Jia-Shu, et al. "Astroconformer: The prospects of analysing stellar light curves with transformer-based deep learning models." 2024<br>
+[17]: Yao, L. U., et al. "The basic shape classification of space debris with light curves." 2021
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+LC toolkit
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Light Curves
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+Easy to use tool for light curve preprocessing and dataset creation, for ML and research comunity.
+
+- Preprocessing functionality
+- Standard filtrations
+- Computation of statistics (Fourier Series, Amplitude...)
+- Compatible with  _huggingface datasets_
+- MMT database snapshot
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Example
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+LC toolkit
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+```python
+preprocessing = Compose(
+    SplitByGaps(max_length=dist),
+    SplitBySize(max_length=dist, uniform=True),
+    FilterFolded(k=100, threshold=0.75),
+    FilterMinLength(100)
+)
+
+db = DatasetBuilder(
+        classes=RB_CLASSES,
+        regexes=None,
+        directory="./MMT",
+        preprocessing=preprocessing,
+        mean_std=True,
+        split_ratio=0.8,
+        lazy=True
+)
+train_set, test_set = db.build_dataset(["time", "mag"])
+train_set.to_dict()
+>>> train_set{
+	"data": {
+		"time":..., "mag":..., "period":..., "amplitude":..., "start_idx":..., "end_idx":..., 
+	},
+	"mean": {"time": ..., "mag":...},
+	"std": {"time":..., "mag":...}
+}
+```
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 93%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 5%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Conclusion
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+- Developed image processing pipeline for reentry events
+- Model for object characterization by its light curves
+- Dataset and Benchmark using MMT database for Rocket Body classification
+- Development of LC toolkit
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Thank you for your attention! <!-- .element: class="title" -->
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":"540","margin":0.04,"controls":false,"progress":true,"slideNumber":true,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

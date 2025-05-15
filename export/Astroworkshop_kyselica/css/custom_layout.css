@@ -1,0 +1,17 @@
+.title{
+	color: #003cb3;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+.subtitle{
+	font-weight: bold;
+}
+.horizontal_line{
+  border-bottom: 2px solid gray;
+} 
+.footer{
+	font-size: 0.7em;
+}
+.reveal {
+	font-size: 1.6em;
+}

@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/white.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/custom_layout.css" />
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0px 0px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 25%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+<img src="presentation-theme/FMFI_logo_text_ENG_black.png" alt="" style="object-fit: scale-down">
+
+
+</div>
+
+<div class="title" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 25%; height: 40%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Machine learning in astronomy
+</div>
+
+
+</div>
+
+<div class="event" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 65%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Astroworkshop 2024
+</div>
+
+
+</div>
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 75%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Daniel Kyselica
+</div>
+
+
+</div>
+
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 0%; top: 90%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="footer" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 50%; top: 90%; height: 10%; width: 50%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<div class="block">
+
+19.4.2024
+</div>
+
+
+</div>
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 5%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Why machine learning?
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+- Fast
+- No instructions needed
+- No bias
+- Able to find hidden connections
+- Lot of available data
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<img src="Dizzertation/Astroworkshop/images/robot.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 5%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Demystifying machine learning
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 5%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418201604.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Supervised learning
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Demystifying machine learning
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 5%; height: 100%; width: 40%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+- Good definition of a problem
+- Labaled data
+- Problems:
+	- Classification
+	- Segmentation
+</div>
+<div class="" style="font-size: 1.4em; position: absolute; left: 40%; top: 5%; height: 100%; width: 60%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418202918.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Segmentation
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Supervised learning
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 100%; width: 40%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+- Find all stars and galaxies
+- Mask R-CNN neural network
+</div>
+
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418193840.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[1]: Colin J. Burke et. al. Deblending and Classifying Astronomical Sources with Mask R-CNN Deep Learning
+</div>
+
+
+</div>
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418193355.png" alt="" style="object-fit: scale-down">
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 5%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Segmentation in python
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+<div class="" style="font-size: 1.4em; position: absolute; left: 0%; top: 30%; height: 50%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+```python
+#-------------- Create model object in inference mode------------------------
+print("loading mask R-CNN model")
+model = modellib.MaskRCNN(mode="inference", config=config, model_dir=ROOT_DIR)
+#-------------- Load weights trained on MS-COCO -------------------------------
+model.load_weights(COCO_MODEL_PATH, by_name=True)
+
+os.chdir('../')
+
+sample_image = "11.jpg"
+image = skimage.io.imread(os.path.join("../input/data-images/", sample_image))
+results = model.detect([image], verbose=1)
+
+# Visualize results
+r = results[0]
+print( class_names[r['class_ids'][0]])
+
+visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], class_names, r['scores'])
+```
+</div>
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Results
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Segmentation
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+<div class="" style="font-size: 1.4em; position: absolute; left: 0%; top: 0%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418195240.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="font-size: 1.4em; position: absolute; left: 50%; top: 0%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418195303.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Light curve classification
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Supervised learning
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+<div class="" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 5%; height: 20%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**Atlas V Centaur** <!-- .element: style="font-size: 0.8em" --> 
+</div>
+<div class="" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<img src="Dizzertation/SVK 2024/atlas_V_lc.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 50%; top: 20%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<img src="Dizzertation/SVK 2024/Atlas_V_PHS_30_OBS_30.gif" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+https://www.sdlcd.space-debris.sk/
+</div>
+
+
+</div>
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Results
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Light curve classification
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 10%; top: 0%; height: 100%; width: 80%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+|           | CZ-3 | falcon 9 | atlas V | H2-A | Globalstar | Avg. |
+| --------- | ---- | -------- | ------- | ---- | ---------- | ---- |
+| precision | 0.83 | 0.31     | 0.76    | 0.93 | 0.91       | 0.75 |
+| recall    | 0.74 | 0.54     | 0.55    | 0.87 | 0.99       | 0.74 |
+| f1        | 0.79 | 0.40     | 0.64    | 0.90 | 0.95       | 0.73 |
+
+</div>
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Unsupervised learning
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Demystifying machine learning
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+- Big Data without labels
+- Clustering
+- Data mining
+- Dimensionality reduction
+- Forecasting
+- Denoising
+</div>
+<div class="" style="font-size: 1.4em; position: absolute; left: 50%; top: 5%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418203949.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Dimensionality reduction
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Unsupervised learning
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418204420.png" alt="" style="width: 200px; object-fit: fill">
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418204452.png" alt="" style="width: 200px; object-fit: fill">
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418204531.png" alt="" style="width: 200px; object-fit: fill">
+
+</div>
+<div class="" style="font-size: 2em; position: absolute; left: 22%; top: 0%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+`$\rightarrow$`
+</div>
+<div class="" style="font-size: 1.4em; position: absolute; left: 50%; top: 5%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418204302.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Dimensionality reduction
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Unsupervised learning
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="font-size: 1.4em; position: absolute; left: 0%; top: 20%; height: 50%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+```python
+XX = np.concatenate([X["cz_3"], X["atlas_V"], X["h2a"], X["globalstar"]], axis=0)
+
+reduced_data = TSNE(n_components=2,
+					learning_rate='auto', 
+					init='random', 
+					perplexity=5).fit_transform(XX)
+for l in np.unique(labels):
+    ok = labels == l
+    plt.scatter(reduced_data[ok, 0],
+	         reduced_data[ok, 1],
+	         label=class_names[l])
+
+plt.legend()
+```
+</div>
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+</div>
+
+
+</div>
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SuperResolution
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Unsupervised learning
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="font-size: 1.4em; position: absolute; left: 0%; top: 5%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418205825.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+S2DR3: Effective 12-Band 10x Single Image Super-Resolution for Sentinel-2
+</div>
+
+
+</div>
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Space weather forecasting
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Unsupervised learning
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+<div class="" style="font-size: 2em; position: absolute; left: 0%; top: 0%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418211627.png" alt="" style="width: 400px; object-fit: fill">
+
+</div>
+<div class="" style="font-size: 1.4em; position: absolute; left: 50%; top: 0%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418211723.png" alt="" style="width: 400px; object-fit: fill">
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Vishal Upendran el. al. Solar Wind Prediction Using Deep Learning
+</div>
+
+
+</div>
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="" style="padding: 0 0px; box-sizing: border-box; position: absolute; left: 80%; top: 0%; height: 17%; width: 17%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+<img src="presentation-theme/images/FMFI_logo_black.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+LSTM
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Solar weather forecasting
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 70%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 5%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<img src="Dizzertation/Astroworkshop/images/Pasted image 20240418212117.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 2%; top: 95%; height: 0%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Sepp Hochreiter and Jürgen Schmidhuber, Long Short-term Memory
+</div>
+
+
+</div>
+</div>
+</div></script></section></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-background-opacity="0.5" data-background-image="Pasted image 20240419083915.png" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Thank you for your attention! <!-- .element: class="title" -->
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":"540","margin":0.04,"controls":true,"progress":true,"slideNumber":true,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

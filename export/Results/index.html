@@ -1,0 +1,2561 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/white.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/custom_layout.css" />
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 5%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Základné štatistiky
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- Dve verzie dotazníka v EN a SK
+	- EN: 58 respondentov 
+	- SK: 62 respondentov
+- Celkovo 20 národností
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 2%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<img src="Meaning of life/images/Pasted image 20240520130224.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+</div>
+
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Vzdelanie
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Základné štatistiky
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<split even gap="2">
+
+|   Dosiahnuté vzdelanie   | Počet | 
+| :----------------------: | :---: |
+|      Základná škola      |   3   |  
+|      Stredná škola       |  18   | 
+|  Vysoká škola I. stupeň  |  56   | 
+| Vysoká škola II. stupeň  |  38   |
+| Vysoká škola III. stupeň |   1   
+
+<img src="Meaning of life/images/Pasted image 20240520132711.png" alt="" style="width: 450px; object-fit: fill">
+
+</split>
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Vek
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Základné štatistiky
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 2%; height: 100%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- Väčšina respondentov vo veku do 30 rokov
+- 17 respondentov nad 40 rokov
+</div>
+
+<div class="" style="position: absolute; left: 40%; top: 2%; height: 100%; width: 55%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<img src="Meaning of life/images/Pasted image 20240520143356.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Počet detí
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Základné štatistiky
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- Vačšina respondentov je bezdetná
+- 10 % má jedno alebo viac detí
+</div>
+<div class="" style="position: absolute; left: 50%; top: 2%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+| Počet detí | Počet respondentov |
+| :--: | :--: |
+| 0 |  102 |
+| 1 |    4 |
+| 2 |    4 |
+| 3 |    1 |
+| 4 |    3 |
+| 5 |    2 |
+</div>
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Rodinný stav
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Základné štatistiky
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- v EN verzií rovnaký počet slobodných a vo vzťahu
+- v SK verzií  66% ľudí slobodných
+</div>
+<div class="" style="position: absolute; left: 45%; top: 0%; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<img src="Meaning of life/images/rodinny_stav.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Náboženské presvedčenie
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Základné štatistiky
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<img src="Meaning of life/images/feith.png" alt="" style="margin: auto; object-fit: scale-down">
+
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SK vs EN verzia
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Náboženské presvedčenie
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**SK**
+<img src="Meaning of life/images/feith_SK.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**EN**
+<img src="Meaning of life/images/feith_EN.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Existencia všeobecne platných etických zákonov
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Základné štatistiky
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+
+
+<img src="Meaning of life/images/etika.png" alt="" style="margin: auto; width: 500px; object-fit: fill">
+
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SK vs EN verzia
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Existencia všeobecne platných etických zákonov
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**SK**
+<img src="Meaning of life/images/etika_SK.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**EN**
+<img src="Meaning of life/images/etika_EN.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Ako veľmi je tvoj život náročný
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Základné štatistiky
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+1 = nedá sa to vydržať `$\rightarrow$` 5 = úplne ľahký <!-- .element: style="margin: auto" -->
+
+<img src="Meaning of life/images/diff_life.png" alt="" style="margin: auto; width: 500px; object-fit: fill">
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SK vs EN verzia
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Ako veľmi je tvoj život náročný
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**SK**
+<img src="Meaning of life/images/diff_life_SK.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**EN**
+<img src="Meaning of life/images/diff_life_EN.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Spokojnosť so životom
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Základné štatistiky
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+1 = úplne nespokojný `$\rightarrow$` 5 = úplne spokojný <!-- .element: style="margin: auto" -->
+
+<img src="Meaning of life/images/life2.png" alt="" style="margin: auto; width: 600px; object-fit: fill">
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SK vs EN verzia
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Spokojnosť so životom
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**SK**
+<img src="Meaning of life/images/life2_SK.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**EN**
+<img src="Meaning of life/images/life2_EN.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Otázky o živote <!-- .element: class="title" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Čo mi robí v živote najväčšiu radosť?
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Otázky o živote
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+
+- Odpovede boli roztriedene do 11 kategórií
+- Každá odpoveď mohla byť zložená z viacerých kategórií
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="font-size: 0.8em; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+|**Kategória**| **Stručný popis**  |
+|---|---|
+|rodina a priatelia | - |
+|sebarealizácia / práca | - |
+|pôžitok|zábava a fyzický pôžitok - jedlo, alhohol, šport, sex...|
+|krása|krása prírody, krása vo všeobecnosti|
+|zážitky|zážitky nie nutne pozitívne, objavovanie sveta|
+|umenie|hudba, literatúra, obrazy...|
+|iné| - |
+|láska|láska, altruizmus, milovať prírodu, pomáhať iným|
+|náboženstvo|náboženské motivácie|
+|štúdium|štúdium, zamýšlanie sa nad životom|
+|zvieratá|domáci miláčikovia, zvieratá všeobecne|
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Výsledky
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Čo mi robí v živote najväčšiu radosť?
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<img src="Meaning of life/images/joy.png" alt="" style="margin: auto; object-fit: scale-down">
+
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SK vs EN verzia
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Čo mi robí v živote najväčšiu radosť?
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**SK**
+<img src="Meaning of life/images/joy_SK.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**EN**
+<img src="Meaning of life/images/joy_EN.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Čoho sa v živote najviac bojím?
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Otázky o živote
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+
+- Odpovede boli roztriedene do 11 kategórií
+- Každá odpoveď mohla byť zložená z viacerých kategórií
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="font-size: 0.7em; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+|**Kategória**| **Stručný popis**  |
+| --- | --- |
+| fyzická bolesť | fyzické utrpenie. bolesť|
+| osamelosť|byť sám, osamelá(ý)| 
+| strata kontroly|strata kontroly nad vlastným telom v dôsledku choroby, strata možnosti zmeniť veci v svojom živote|
+| zlyhanie|zlyhanie pri nedosiahnutí cieľa|
+| iné | - |
+| fóbia|strach z nejakého objektu, fenoménu - výsky, pavúky, uzavreté priestory|
+| smrť|strach zo smrti, z konca života, z toho ččo bude po smrti|
+| strata blízskeho|strata milovanej osoby|
+| dôvod utrpenia|stať sa dôvodom utrpenia alebo trápenia pre iných ľudí|
+| zabudnutá(ý)|byť zabudnutý počas života a po smrti|
+| nemilovaná(ý)|nebyť milovaný|
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Výsledky
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Čoho sa v živote najviac bojím?
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<img src="Meaning of life/images/fear.png" alt="" style="margin: auto; object-fit: scale-down">
+
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SK vs EN verzia
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Čoho sa v živote najviac bojím?
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**SK**
+<img src="Meaning of life/images/fear_SK.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**EN**
+<img src="Meaning of life/images/fear_EN.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Čo v živote najviac ľutujem?
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Otázky o živote
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+- Odpovede boli roztriedene do 8 kategórií
+- Každá odpoveď mohla byť zložená z viacerých kategórií
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="font-size: 0.9.em; position: absolute; left: 5%; top: 0%; height: 100%; width: 90%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+|**Kategória**| **Stručný popis**  |
+|---|---|
+|zlyhanie|zlyhanie|
+|premrhané príležitosti||
+|rozhodnutia|konkrétne rozhodnutie v živote (napríklald výber vysokej školy)|
+|nič||
+|skutok|nejaký skutok v živote|
+|ublíženie druhým||
+|iné||
+|nebyť sám sebou|nespravať sa autenticky, prispôsobovať sa okolu a druhým|
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Výsledky
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Čo v živote najviac ľutujem?
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<img src="Meaning of life/images/regret.png" alt="" style="margin: auto; object-fit: scale-down">
+
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SK vs EN verzia
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Čo v živote najviac ľutujem?
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**SK**
+<img src="Meaning of life/images/regret_SK.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**EN**
+<img src="Meaning of life/images/regret_EN.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Po čom v živote najviac túžim?
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Otázky o živote
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+- Odpovede boli roztriedene do 11 kategórií
+- Každá odpoveď mohla byť zložená z viacerých kategórií
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="font-size: 0.8em; position: absolute; left: 5%; top: 0%; height: 100%; width: 90%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+|**Kategória**| **Stručný popis**  |
+|---|---|
+|radosť|mať radosť zo života|
+|rodina|dobré vzťhay v rodine, mať blízskych ľudí|
+|náboženstvo|náboženské ciele|
+|iné| - |
+|vzťahy|vzťah zo spriaznenou osobou|
+|spokojnosť|byť spokojný so sebou|
+|sloboda|byť slobodný, necítiť sa obmedzovaný okolím|
+|úspech|dosiahnuť úspech v práci, kariere|
+|zdravie| - |
+|dopad|mať dopad na daľšie generácia, byť zapamätaný|
+|pokoj| - |
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Výsledky
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Po čom v živote najviac túžim?
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<img src="Meaning of life/images/desire.png" alt="" style="margin: auto; object-fit: scale-down">
+
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SK vs EN verzia
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Po čom v živote najviac túžim?
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**SK**
+<img src="Meaning of life/images/desire_SK.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**EN**
+<img src="Meaning of life/images/desire_EN.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Akú máš motiváciu vstať ráno z postele?
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Otázky o živote
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+- Odpovede boli roztriedene do 10 kategórií
+- Každá odpoveď mohla byť zložená z viacerých kategórií
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="font-size: 0.8.em; position: absolute; left: 5%; top: 0%; height: 100%; width: 90%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+|**Kategória**| **Stručný popis**  |
+|---|---|
+|práca|práca a povinnosti|
+|rodina|family|
+|náboženstvo|náboženské motivácie|
+|spoznávanie|World is interesting - exploring|
+|radosť|Happiness - Joy of living|
+|sebazdokonalovanie|self improvement|
+|inštinkt|animal instinct|
+|poivinnosti|duties|
+|ciele|goals|
+|iné|other|
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Výsledky
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Akú máš motiváciu vstať ráno z postele?
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<img src="Meaning of life/images/wakeup.png" alt="" style="margin: auto; object-fit: scale-down">
+
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SK vs EN verzia
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Akú máš motiváciu vstať ráno z postele?
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**SK**
+<img src="Meaning of life/images/wakeup_SK.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**EN**
+<img src="Meaning of life/images/wakeup_EN.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Príbehy<!-- .element: class="title" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 5%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbehy
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+- 4  životné príbehy ľudí
+- každý obsahuje pozitívnu aj negatívnu stránku
+- hodnotenie od 1 po 5 aký dobrý život vedie daný človek
+	- 1 `$\rightarrow$` zlý
+	- 5 `$\rightarrow$` dobrý
+
+</div>
+
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 5%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 1
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+<div class="" style="font-size: 0.9em; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+> Volám sa Adrián, mám 60 rokov a celý život som pracoval ako strojár. Mám ženu, 3 deti a 5 vnúčat. Svoj život som prežil tak, ako sa patrí. O rodinu som sa staral, všetky deti som poslal študovať a pomohol im, keď to najviac potrebovali. Ak mi ostal čas, spolu s manželkou sme po práci občas zašli do miestneho útulku vyvenčiť psov alebo upratať miestny park. Okrem toho som aj členom hnutia za národ, ktoré sa snaží ochrániť našu krajinu hlavne pred moslimskými utečencami, lebo hrozba zničenia našich národných hodnôt je obrovská. Teraz si užívam zaslúžený oddych na chate, ktorú som si postavil z našetrených peňazí.
+</div>
+
+</div>
+
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Pozitíva vs. Negatíva
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 1
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**Pozitíva**
+- Starostlivosť o rodinu
+- Obetavosť
+- Dobrovoľnícke aktivity
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**Negatíva**
+- Nenávisť k utečencom
+- Nenávisť k moslimom
+</div>
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Výsledky
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 1
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<img src="Meaning of life/images/story1.png" alt="" style="margin: auto; object-fit: scale-down">
+
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SK vs EN verzia
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 1
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**SK**
+<img src="Meaning of life/images/story1_SK.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**EN**
+<img src="Meaning of life/images/story1_EN.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 5%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 2
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+<div class="" style="font-size: 0.9em; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+> Moje meno je Zuzana. Pomaly sa blíži môj dôchodkový vek, ale na oddych nebudem mať čas. Musíte o mne vedieť jednu vec. Veľmi mi záleží na našej planéte. Zasvätila som jej celý svoj život. Už od strednej školy som sa zúčastňovala protestov proti znečisťovaniu prírody a týraniu zvierat. Neskôr som vyštudovala právo a stala som sa tak verejnou "ochrankyňou našej planéty". Cestovanie a pracovná záťaž si vybrali svoju daň. Rozviedla som sa ako 30 ročná a môj jediný syn ostal žiť so svojím otcom. Aj keď to bolo bolestivé, viem, že inak by som nebola schopná robiť moju prácu naplno.  Teraz žijem v Tokiu a neprestávam bojovať za to, čomu najviac verím.
+</div>
+
+</div>
+
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Pozitíva vs. Negatíva
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 2
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**Pozitíva**
+- Láska k prírode
+- Odhodlanosť
+- Boj za životné prostredie
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**Negatíva**
+- Rozvod
+- Zanechanie syna s otcom
+</div>
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Výsledky
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 2
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<img src="Meaning of life/images/story2.png" alt="" style="margin: auto; object-fit: scale-down">
+
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SK vs EN verzia
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 2
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**SK**
+<img src="Meaning of life/images/story2_SK.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**EN**
+<img src="Meaning of life/images/story2_EN.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 5%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 3
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+<div class="" style="font-size: 0.9em; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+> Pochádzam zo severnej Indie a volám sa Kumar. Ako chlapec som veľmi túžil pracovať v armáde. Ani po skončení základnej školy ma táto túžba neopustila, ale moji rodičia si priali, aby som študoval medicínu. Nakoniec sa mi podarilo splniť obe priania - stal som sa vojenským lekárom. Počas vojenskej služby som strávil jeden celý rok na izbe s mojím spolubojovníkom Amarom. Pod jeho vplyvom som sa začal zaujímať o hinduistickú spiritualitu - čítal som starobylé aj moderné texty, občas som chodil aj na diskusie a prednášky. Všetky moje predošlé túžby sa mi začali zdať veľmi plytké v porovnaní s hĺbkou hinduistickej filozofie. Z armády som odišiel a vstúpil som do kláštora, kde už niekoľko desaťročí žijem jednoduchý život a nasledujem učenie dávnych majstrov.
+</div>
+
+</div>
+
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Pozitíva vs. Negatíva
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 3
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 60%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**Pozitíva**
+- Duchovný život
+- Vystúpenie z armády
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 60%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**Negatíva**
+- Zanechanie lekárskej praxe  
+- Zanechanie pomoci ľuďom
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 60%; height: 20%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**V príbehu sa nám nepodarilo zdôrazniť negatívne stránky.**
+</div>
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Výsledky
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 3
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<img src="Meaning of life/images/story3.png" alt="" style="margin: auto; object-fit: scale-down">
+
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SK vs EN verzia
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 3
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**SK**
+<img src="Meaning of life/images/story3_SK.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**EN**
+<img src="Meaning of life/images/story3_EN.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 5%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 4
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="font-size: 0.9em; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+> Som Alex, žijem v Rumunsku. Keď som mal 25 rokov, narodila sa mi moja jediná dcéra. Pri jej narodení doktori zistili, že ma zriedkavú chorobu a bude celý život pripútaná k invalidnému vozíku. Celý môj život sa otočil hore nohami a odvtedy sa snažím spraviť všetko, čo je v mojích silách, aby som jej zabezpečil dôstojný život. Manželka nás opustila, keď sa dcérin stav zhoršil. Kvôli zlej finančnej situácii som bol nútený pracovať v call centrách, kde sme podvodnými praktikami mámili peniaze z naivných dôchodcov. Len vďaka tomu mohla moja dcéra dostať potrebnú starostlivosť. Dožila sa 30 rokov, čo dvakrát prekonalo jej očakávanú dĺžku života podľa lekárov. Vždy, keď si na ňu spomeniem, som šťastný za každý moment, ktorý som s ňou mohol prežiť.
+</div>
+
+</div>
+
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Pozitíva vs. Negatíva
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 4
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**Pozitíva**
+- Starostlivocť o chorú dcéru
+- Obetavosť
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**Negatíva**
+- Klamanie
+- Okrádanie ľudí
+</div>
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Výsledky
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 4
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+
+<img src="Meaning of life/images/story4.png" alt="" style="margin: auto; object-fit: scale-down">
+
+
+
+</div>
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 3%; top: 3%; height: 94%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<div class="title" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SK vs EN verzia
+</div>
+
+
+</div>
+
+<div class="subtitle" style="padding: 0px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 10%; height: 5%; width: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Príbeh 4
+</div>
+
+
+</div>
+
+<div class="horizontal_line" style="position: absolute; left: 2%; top: 20%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 20px 20px; box-sizing: border-box; position: absolute; left: 0%; top: 20%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**SK**
+<img src="Meaning of life/images/story4_SK.png" alt="" style="object-fit: scale-down">
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 0%; height: 100%; width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+**EN**
+<img src="Meaning of life/images/story4_EN.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+</div>
+
+
+</div>
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":"540","margin":0.04,"controls":false,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
