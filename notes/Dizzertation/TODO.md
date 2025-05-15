@@ -1,2 +1,0 @@
-- [ ] Wavelet transformation -> preprocessing step
-- [ ] Another type of classification -> Center loss??
